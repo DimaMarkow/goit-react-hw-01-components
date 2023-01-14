@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
-
-import OneFriend from 'components/FriendList/OneFriend';
+import css from './friendlist.module.css';
 
 export default function FriendList({ friends }) {
   return (
-    <ul className="friend-list">
+    <ul className={css.friendList}>
       {friends.map(friend => (
-        <li className="item" key={friend.id.toString()}>
-          <OneFriend
-            avatar={friend.avatar}
-            name={friend.name}
-            isOnline={friend.isOnline}
+        <li className={css.item} key={friend.id.toString()}>
+          {friend.isOnline && <span className={css.statusIsOnline}>O</span>}
+          {!friend.isOnline && <span className={css.statusOffline}>O</span>}
+
+          <img
+            className={css.avatar}
+            src={friend.avatar}
+            alt="User avatar"
+            width="48"
           />
+          <p className={css.name}>{friend.name}</p>
         </li>
       ))}
     </ul>
@@ -20,6 +24,15 @@ export default function FriendList({ friends }) {
 
 FriendList.propTypes = {
   friends: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.number.isRequired })
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      isOnlineid: PropTypes.bool,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
   ),
+};
+
+FriendList.defaultProps = {
+  friends: [],
 };

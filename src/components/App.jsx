@@ -10,8 +10,9 @@ export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        // height: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
@@ -25,8 +26,8 @@ export const App = () => {
         location={user.location}
         stats={user.stats}
       />
-      {/* <Statistics stats={statData} />
-      <FriendList friends={friends} /> */}
+      <Statistics stats={statData} />
+      <FriendList friends={friends} />
     </div>
   );
 };
