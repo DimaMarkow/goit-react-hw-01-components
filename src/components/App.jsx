@@ -1,10 +1,12 @@
 import Profile from 'components/Profile/Profile';
 import Statistics from 'components/Statistics/Statistics';
 import FriendList from 'components/FriendList/FriendList';
+import TransactionHistory from 'components/TransactionHistory/TransactionHistory';
 
 import user from 'components/user.json';
 import statData from 'components/data.json';
 import friends from 'components/friends.json';
+import transactions from 'components/transactions.json';
 
 export const App = () => {
   return (
@@ -28,6 +30,7 @@ export const App = () => {
       />
       <Statistics stats={statData} />
       <FriendList friends={friends} />
+      <TransactionHistory transactions={transactions} />
     </div>
   );
 };
