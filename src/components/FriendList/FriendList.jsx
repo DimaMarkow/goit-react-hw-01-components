@@ -6,8 +6,12 @@ export default function FriendList({ friends }) {
     <ul className={css.friendList}>
       {friends.map(friend => (
         <li className={css.item} key={friend.id.toString()}>
-          {friend.isOnline && <span className={css.statusIsOnline}>O</span>}
-          {!friend.isOnline && <span className={css.statusOffline}>O</span>}
+          {friend.isOnline ? (
+            <span className={css.statusIsOnline}>O</span>
+          ) : (
+            <span className={css.statusOffline}>O</span>
+          )}
+          {/* {!friend.isOnline && <span className={css.statusOffline}>O</span>} */}
 
           <img
             className={css.avatar}
@@ -26,7 +30,7 @@ FriendList.propTypes = {
   friends: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      isOnlineid: PropTypes.bool,
+      isOnline: PropTypes.bool.isRequired,
       avatar: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     })
